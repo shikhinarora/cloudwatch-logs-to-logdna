@@ -53,7 +53,7 @@ def prepare(cw_log_lines, hostname=None, tags=None):
         options['tags'] = tags
     for cw_log_line in cw_log_lines['logEvents']:
         msg = cw_log_line['message']
-        if  not msg.startswith('START RequestId') and not msg.startswith('END RequestId') and not msg.startswith('REPORT RequestId'):
+        if not (msg.startswith('START RequestId') or msg.startswith('END RequestId') or msg.startswith('REPORT RequestId')):
             stripped_msg = msg.split('\t', 3)[-1]
             level = msg.split('\t')[0]
 
