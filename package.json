@@ -1,0 +1,10 @@
+{
+    "name": "cloudwatch-logs-to-logdna",
+    "version": "1.0.0",
+    "description": "Send cloudwatch logs to logdna",
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "serverless-iam-roles-per-function": "^1.0.4"
+    }
+}

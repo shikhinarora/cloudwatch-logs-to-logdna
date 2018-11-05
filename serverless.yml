@@ -1,0 +1,27 @@
+service: cloudwatch-logs-to-logdna
+
+plugins:
+ - serverless-iam-roles-per-function
+
+provider:
+  name: aws
+  runtime: python2.7
+  stage: dev
+  region: us-east-1
+
+functions:
+  logdna:
+    handler: functions/logdna.handler
+    description: Sends CloudWatch logs to LogDNA
+    memorySize: 128
+    environment:
+      LOGDNA_KEY: <key>
+    iamRoleStatementsName: send-logs-to-logdna-role
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action: "cloudwatch:PutMetricData"
+        Resource: "*"
+
+  testlog:
+    handler: functions/testlog.handler
+    description: Test CloudWatch logs to LogDNA
